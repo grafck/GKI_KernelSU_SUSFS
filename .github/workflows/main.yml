@@ -61,7 +61,7 @@ on:
 
 jobs:
   fetch-commits:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     outputs:
       ksu_commit: ${{ steps.fetch.outputs.ksu_commit }}
       anykernel_commit: ${{ steps.fetch.outputs.anykernel_commit }}
@@ -176,7 +176,7 @@ jobs:
 
   rej:
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       actions: read
       contents: read
@@ -242,7 +242,7 @@ jobs:
         if-no-files-found: ignore
 
   release:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.release_type != 'Actions' }}
     permissions:
       contents: write
